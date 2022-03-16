@@ -3,36 +3,35 @@ package Config;
 import org.testng.annotations.BeforeClass;
 
 import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Playwright;
 
 public class Browsers {
 	
-	private Browser browser;
-	private String chromium;
-	private String firefox;
-	private String webkit;
 	
+	public static Browser selectBrowser(String select) {
+		Browser browser = null ;
+
 	
-	public Browser selectBrowser(String select) {
 		
-		if(select == chromium) {
+		if(select == "chromium") {
 			browser = Playwright
 	                .create()
 	                .chromium()
-	                .launch();
+	                .launch(new BrowserType.LaunchOptions().setHeadless(false));
 			
-		}else if( select == firefox) {
+		}else if( select == "firefox") {
 			browser = Playwright
 	                .create()
 	                .firefox()
-	                .launch();
+	                .launch(new BrowserType.LaunchOptions().setHeadless(false));
 			
 			
-		}else if (select == webkit) {
+		}else if (select == "webkit") {
 			browser = Playwright
 	                .create()
 	                .webkit()
-	                .launch();
+	                .launch(new BrowserType.LaunchOptions().setHeadless(false));
 			
 		}
 		return browser;

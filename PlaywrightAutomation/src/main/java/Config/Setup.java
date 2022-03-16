@@ -1,6 +1,8 @@
 package Config;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 import com.microsoft.playwright.Page;
 
@@ -8,12 +10,12 @@ public class Setup {
 	
 	@BeforeClass
 	public Page setup(String browserName , String url) {
-		Browsers browser = new Browsers();
 				
-        Page page = browser.selectBrowser(browserName).newPage();
+        Page page = Browsers.selectBrowser(browserName).newPage();
         page.navigate(url);
 		return page;
 		
 	}
  
+	
 }
