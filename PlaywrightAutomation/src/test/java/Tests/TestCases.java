@@ -1,24 +1,37 @@
 package Tests;
 
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.microsoft.playwright.Page;
 
 import Config.Setup;
-import Pages.SearchPage;
+import Pages.BasePage;
 
 public class TestCases {
 	
+	BasePage basePage = null;
 	
+	@BeforeTest
+	public BasePage beforeTest() {
+		Setup s = new Setup();
+		Page page = s.setup("chromium", "https://www.flipkart.com");
+		basePage = new BasePage(page);
+		
+		return basePage;
+	}
 	
 	@Test
-	void searchTest() {
-		Setup s = new Setup();
-		s.setup("firefox", "https://www.flipkart.com");
+	void preTest() throws InterruptedException {
 		
-//	    SearchPage searchPage = new SearchPage(page);
-		
-		
+		basePage.search("//input[@class='_3704LK']", "iphone13");
+		basePage.mouseMove(58, 96);
+
 	}
 
+	@Test
+	void searchTest() throws InterruptedException {
+		
+
+	}
 }

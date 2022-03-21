@@ -5,6 +5,7 @@
     <classes>
       <class name="Tests.TestCases">
         <methods>
+          <include name="pre"/>
           <include name="searchTest"/>
         </methods>
       </class> <!-- Tests.TestCases -->

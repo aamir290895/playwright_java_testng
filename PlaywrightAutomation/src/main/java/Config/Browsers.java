@@ -1,7 +1,5 @@
 package Config;
 
-import org.testng.annotations.BeforeClass;
-
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Playwright;
@@ -12,8 +10,6 @@ public class Browsers {
 	public static Browser selectBrowser(String select) {
 		Browser browser = null ;
 
-	
-		
 		if(select == "chromium") {
 			browser = Playwright
 	                .create()
